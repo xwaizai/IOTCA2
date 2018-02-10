@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+	<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery‐3.2.1.js"></script>
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='bootstrap-3.3.7-dist/css/bootstrap.min.css') }}" />
+	<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='bootstrap-3.3.7-dist/css/mycss.css') }}" />
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	<script>
+
+    function searchCapture(input) {
+    document.getElementById('capture').innerHTML = "<img src=https://s3-us-west-2.amazonaws.com/jcimagebucket/"+input+".jpg width='500' height='400'>";
+    }
+
+    function onAlarm(){
+	$("#status").html("Alarm Mode is On");
+        $.ajax({url: "alarmchange/On"
+        })
+    }
+
+    function offAlarm(){
+	$("#status").html("Alarm Mode is Off");
+        $.ajax({url: "alarmchange/Off"
+    })
+}
+
+ 	$(document).ready(function(){
+
+
+	$("#b3").click(function(){
+        onAlarm();
+    });
+	$("#b4").click(function(){
+        offAlarm();
+    });
+ });
+ 
+ 	</script>
+	</head>
+	<body>
+		<nav class="navbar navbar-default">
+  		<div class="container-fluid">
+    		<div class="navbar-header">
+      			<a class="navbar-brand" href="/">Birdie's Secure Smart Office</a>
+    		</div>
+    <ul class="nav navbar-nav">
+      <li><a href="/">Home</a></li>
+	  <li><a href="/led">LED Light</a></li>
+	  <li class="active"><a href="/alarm">Alarm System</a></li>
+	  <li><a href="/temp">Temperature</a></li>
+      <li><a href="/contactus">Contact Us</a></li>
+    </ul>
+  		</div>
+	</nav>
+
+
+<div id="buttons" class="container">
+    <button class="btn btn-success" id="b3">Turn on</button>
+    <button class="btn btn-danger" id="b4">Turn off</button>
+</div>
+
+<div class="jumbotron">
+        
+<div id="capture">
+</div>
+<div class="container">
+  <table class="table table-bordered table-striped" style="margin-top: 1cm;">
+    <thead>
+      <tr>
+        <th>Date_Time</th>
+        
+      </tr>
+    </thead>
+    <tbody id="myTable">
+	{% for datetimeinfo in dates %}
+	<tr>
+	<td><input type="button" value={{ datetimeinfo }} onclick="searchCapture(value)" class="form-control"></td>
+	</tr>
+	{% endfor %}
+    </tbody>
+  </table>
+</div>	
+</div>
+	</html>

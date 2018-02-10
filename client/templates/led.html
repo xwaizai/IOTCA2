@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+	<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery‐3.2.1.js"></script>
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='bootstrap-3.3.7-dist/css/bootstrap.min.css') }}" />
+	<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='bootstrap-3.3.7-dist/css/mycss.css') }}" />  	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	<script>
+
+function update_values() {
+
+		  //$SCRIPT_ROOT = {{request.script_root|tojson|safe}};
+        $.getJSON("/ledlive",
+
+            function(data) {
+
+                $("#temp").text(data.temp);
+                
+
+            });
+
+    }
+
+	function changeledOn() {
+    var image = document.getElementById('myled');
+        image.src = "/static/images/pic_bulbon.gif";
+}
+	function changeledOff() {
+    var image = document.getElementById('myled');
+        image.src = "/static/images/pic_bulboff.gif";
+}
+
+	 function turnon(){
+		changeledOn()
+ 		$.ajax({url: "ledchange/On",
+ 	})
+ }
+
+ 	function turnoff(){
+		changeledOff()
+ 		$.ajax({url: "ledchange/Off",
+ 	})
+}
+
+ 	$(document).ready(function(){
+
+	$('[data-toggle="tooltip"]').tooltip();  
+	
+ 	$("#b1").click(function(){
+ 		turnon();
+ 	});
+ 	$("#b2").click(function(){
+ 		turnoff();
+	});
+	
+ });
+ 	</script>
+	</head>
+	<body>
+		<nav class="navbar navbar-default">
+  		<div class="container-fluid">
+    		<div class="navbar-header">
+      			<a class="navbar-brand" href="/">Birdie's Secure Smart Office</a>
+    		</div>
+    <ul class="nav navbar-nav">
+      <li><a href="/">Home</a></li>
+	  <li class="active"><a href="/">LED Light</a></li>
+	  <li><a href="/alarm">Alarm System</a></li>
+	  <li><a href="/temp">Temperature</a></li>
+      <li><a href="/contactus">Contact Us</a></li>
+    </ul>
+  		</div>
+	</nav>
+
+	<div id="buttons" class="container" style="width:800px; margin:0 auto;">
+	<div id="lightbulb">
+		<img id="myled" src="/static/images/pic_bulboff.gif" width="100" height="180">
+	</div>
+
+	
+	<button id="b1" class="btn btn-success">Turn on</button>
+    	<button id="b2" class="btn btn-danger">Turn off</button>
+	</div>
+
+	
+	
+
+</html>

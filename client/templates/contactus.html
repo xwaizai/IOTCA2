@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+	<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery‐3.2.1.js"></script>
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='bootstrap-3.3.7-dist/css/bootstrap.min.css') }}" />
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	<style>
+	body {
+      position: relative; 
+	}
+	#section1 {padding-top:50px;height:500px;color: #fff; background-color: #1E88E5;}
+	#section2 {padding-top:50px;height:500px;color: #fff; background-color: #673ab7;}
+	#section3 {padding-top:50px;height:500px;color: #fff; background-color: #ff9800;}
+	#section41 {padding-top:50px;height:500px;color: #fff; background-color: #00bcd4;}
+	#section42 {padding-top:50px;height:500px;color: #fff; background-color: #009688;}
+	</style>
+	</head>
+	<body data-spy="scroll" data-target=".navbar" data-offset="50">
+		<nav class="navbar navbar-default">
+  		<div class="container-fluid">
+    		<div class="navbar-header">
+      			<a class="navbar-brand" href="/">Birdie's Secure Smart Office</a>
+    		</div>
+    <ul class="nav navbar-nav">
+      <li><a href="/">Home</a></li>
+	  <li><a href="/led">LED Light</a></li>
+      <li><a href="/alarm">Alarm System</a></li>
+      <li><a href="/temp">Temperature</a></li>
+      <li class="active"><a href="/contactus">Contact Us</a></li>
+    </ul>
+  		</div>
+	</nav>
+	
+	
+
+	<div class="container">
+	<div class="row">
+            <div class="col-sm-2 col-lg-2">
+                <h2>Contact us</h2>
+            </div>
+        </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="well well-sm">
+                <form>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="name">
+                                Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter name" required="required" />
+                        </div>
+                        <div class="form-group">
+                            <label for="email">
+                                Email Address</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
+                                </span>
+                                <input type="email" class="form-control" id="email" placeholder="Enter email" required="required" /></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">
+                                Subject</label>
+                            <select id="subject" name="subject" class="form-control" required="required">
+                                <option value="na" selected="">Choose One:</option>
+                                <option value="service">General Customer Service</option>
+                                <option value="suggestions">Suggestions</option>
+                                <option value="product">Product Support</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="name">
+                                Message</label>
+                            <textarea name="message" id="message" class="form-control" rows="9" cols="25" required="required"
+                                placeholder="Message"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary pull-right" id="btnContactUs">
+                            Send Message</button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <form>
+            <legend><span class="glyphicon glyphicon-globe"></span> Our office</legend>
+            <address>
+                <strong>JC, Inc.</strong><br>
+                Singapore Polytechnic<br>
+                T21<br>
+                <abbr title="Phone">
+                    +65 </abbr>
+                99999999
+            </address>
+            <address>
+                <strong>Full Name</strong><br>
+                <a href="mailto:#">swaggydoggo@gg.com</a>
+            </address>
+            </form>
+        </div>
+    </div>
+</div>
+	
+	
+	
+	
+</html>

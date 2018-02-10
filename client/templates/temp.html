@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+	<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery‐3.2.1.js"></script>
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='bootstrap-3.3.7-dist/css/bootstrap.min.css') }}" />
+	<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='bootstrap-3.3.7-dist/css/mycss.css') }}" />  	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	<script>
+
+function update_values() {
+
+		  //$SCRIPT_ROOT = {{request.script_root|tojson|safe}};
+        $.getJSON("/ledlive",
+
+            function(data) {
+
+                $("#temp").text(data.temp);
+                $("#humidity").text(data.humidity);
+                
+
+            });
+
+    }
+
+	function changeledOn() {
+    var image = document.getElementById('myled');
+        image.src = "/static/images/pic_bulbon.gif";
+}
+	function changeledOff() {
+    var image = document.getElementById('myled');
+        image.src = "/static/images/pic_bulboff.gif";
+}
+
+	 function turnon(){
+		changeledOn()
+ 		$.ajax({url: "ledchange/On",
+ 	})
+ }
+
+ 	function turnoff(){
+		changeledOff()
+ 		$.ajax({url: "ledchange/Off",
+ 	})
+}
+
+ 	$(document).ready(function(){
+
+	$('[data-toggle="tooltip"]').tooltip();  
+	
+ 	$("#b1").click(function(){
+ 		turnon();
+ 	});
+ 	$("#b2").click(function(){
+ 		turnoff();
+	});
+	setInterval(update_values, 10000);
+ });
+ 	</script>
+	</head>
+	<body>
+		<nav class="navbar navbar-default">
+  		<div class="container-fluid">
+    		<div class="navbar-header">
+      			<a class="navbar-brand" href="/">Birdie's Secure Smart Office</a>
+    		</div>
+    <ul class="nav navbar-nav">
+      <li><a href="/">Home</a></li>
+	  <li><a href="/">LED Light</a></li>
+      <li><a href="/alarm">Alarm System</a></li>
+      <li class="active"><a href="/temp">Temperature</a></li>
+      <li><a href="/contactus">Contact Us</a></li>
+    </ul>
+  		</div>
+	</nav>
+
+	<div class="container">
+    
+    <div class="jumbotron" style="text-align:center;">
+        <h2>Temperature:</h2>
+        <h2 id="temp" > {{temp}}</h2>
+        
+        
+        </p>
+    </div>
+    <div class="jumbotron" style="text-align:center;">
+        
+        
+        <h2>Humidity:</h2>
+        <h2 id="humidity" > {{humidity}}</h2>  
+        </p>
+    </div>
+	
+    </div>
+</html>
