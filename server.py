@@ -149,7 +149,7 @@ my_rpi.connect()
 my_rpi.subscribe("sensors/alarmmode", 1, customCallback)
 my_rpi.subscribe("sensors/lightmode", 1, customCallbacklight)
 
-bot = telepot.Bot("464277911:AAG39Ouf5EwKKvhbs1yMFPxJ6cBMPj7R0QM")
+bot = telepot.Bot("<YOUR API KEY HERE>")
 
 
 sleep(2)
